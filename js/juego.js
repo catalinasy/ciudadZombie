@@ -20,8 +20,36 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 100, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 200, 460, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 200, 480, 30, 30, 1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 350, 400, 30, 15, 1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 600, 80, 30, 15, 1), 
+    new Obstaculo('imagenes/auto_verde_derecha.png', 550, 80, 30, 15, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 570, 470, 15, 30,1 ),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 470, 400, 15, 30,1 ),
+     
+    new Obstaculo('imagenes/bache.png', 170, 80, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 300, 470, 30, 30,1 ),
+    new Obstaculo('imagenes/bache.png', 560, 400, 30, 30,1 ),
+  
+    new Obstaculo('imagenes/bache.png',550, 210, 30, 30,1 ),
+    new Obstaculo('imagenes/bache.png', 700, 120, 30, 30,1 ),
+    new Obstaculo('imagenes/bache.png', 770, 300, 30, 30,1 ),
+    new Obstaculo('imagenes/bache.png', 500, 100, 30, 30,1 ),
+    new Obstaculo('imagenes/valla_vertical.png', 500, 460, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 500, 480, 30, 30, 1),
+    
+    new Obstaculo('imagenes/valla_horizontal.png', 560, 230, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 530, 230, 30, 30, 1),
 
+    
+    new Obstaculo('imagenes/valla_vertical.png', 800, 100, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 800, 80, 30, 30, 1),
+    
+  
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -105,6 +133,7 @@ Juego.update = function() {
   this.calcularAtaques();
   this.moverEnemigos();
 }
+
 // Captura las teclas y si coincide con alguna de las flechas tiene que
 // hacer que el jugador principal se mueva
 Juego.capturarMovimiento = function(tecla) {
@@ -130,6 +159,7 @@ Juego.capturarMovimiento = function(tecla) {
   if (this.chequearColisiones(movX + this.jugador.x, movY + this.jugador.y)) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
     de sus metodos  */
+    Jugador.moverse(movX, movY,tecla);
 
     /* COMPLETAR */
   }
@@ -157,6 +187,12 @@ Juego.dibujar = function() {
   this.enemigos.forEach(function(enemigo) {
     /* Completar */
   });
+
+  Juego.dibujar = function(){
+    Dibujante.dibujarEntidad(Jugador);
+  }
+
+  
 
   // El dibujante dibuja las vidas del jugador
   var tamanio = this.anchoCanvas / this.vidasInicial;
@@ -200,9 +236,10 @@ Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true
   this.obstaculos().forEach(function(obstaculo) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
-
-      /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+      
+      obstaculo.chocar(Jugador);
+      console.log(Jugador.vidas)
+      obstaculo.potencia=0;
       puedeMoverse = false
     }
   }, this)
@@ -252,6 +289,7 @@ Juego.ganoJuego = function() {
 
 Juego.iniciarRecursos();
 
+
 // Activa las lecturas del teclado al presionar teclas
 // Documentacion: https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener
 document.addEventListener('keydown', function(e) {
@@ -260,6 +298,7 @@ document.addEventListener('keydown', function(e) {
     38: 'arriba',
     39: 'der',
     40: 'abajo'
+
   };
 
   Juego.capturarMovimiento(allowedKeys[e.keyCode]);
