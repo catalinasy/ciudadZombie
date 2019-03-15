@@ -72,6 +72,61 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
+    new ZombieCaminante('imagenes/zombie1.png', 70, 100, 10, 10, 2,{desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    
+    new ZombieCaminante('imagenes/zombie2.png', 80, 200, 10, 10, 2,{desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    new ZombieCaminante('imagenes/zombie2.png', 90, 70, 10, 10, 2, {desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+        new ZombieCaminante('imagenes/zombie2.png', 30, 40, 10, 10, 2, {desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+        new ZombieCaminante('imagenes/zombie2.png', 200, 120,10, 10, 2,{desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    new ZombieCaminante('imagenes/zombie2.png', 600, 400,10, 10, 2,{desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    new ZombieCaminante('imagenes/zombie2.png', 350, 415,10, 10, 2,{desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    new ZombieCaminante('imagenes/zombie2.png', 230, 425,10, 10, 2,{desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    new ZombieCaminante('imagenes/zombie2.png', 210, 70,10, 10, 2, {desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+        new ZombieConductor('imagenes/tren_horizontal.png', 400,322,90,30, 1, 20, 'h'),
+    new ZombieConductor('imagenes/tren_vertical.png', 644, 0, 30, 90, 1, 20, 'v'),
+    new ZombieConductor('imagenes/tren_vertical.png', 678, 0, 30, 90, 1, 20, 'v')
 
   ]
 
@@ -172,25 +227,20 @@ Juego.dibujar = function() {
   this.dibujarFondo();
 
 
-  /* Aca hay que agregar la logica para poder dibujar al jugador principal
-  utilizando al dibujante y los metodos que nos brinda.
-  "Dibujante dibuja al jugador" */
-
-  /* Completar */
-
+  Dibujante.dibujarEntidad(Jugador);
+  
   // Se recorren los obstaculos de la carretera pintandolos
   this.obstaculosCarretera.forEach(function(obstaculo) {
     Dibujante.dibujarEntidad(obstaculo);
   });
 
+
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
-    /* Completar */
+    Dibujante.dibujarEntidad(enemigo);
+    
   });
 
-  Juego.dibujar = function(){
-    Dibujante.dibujarEntidad(Jugador);
-  }
 
   
 
@@ -201,7 +251,16 @@ Juego.dibujar = function() {
     var x = tamanio * i
     Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
   }
+
+  
+  
+//Dibujante dibuja las lineas de llegada//
+Dibujante.dibujarRectangulo('green', 750, 400, 150, 30);
+
 };
+
+
+
 
 
 
@@ -209,7 +268,11 @@ Juego.dibujar = function() {
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
-  /* COMPLETAR */
+
+  this.enemigos.forEach(function(enemigo) {
+    
+  })
+ 
 };
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
