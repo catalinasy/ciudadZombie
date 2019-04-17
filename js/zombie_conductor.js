@@ -15,7 +15,7 @@ ZombieConductor.prototype.mover = function() {
   /* Los movimientos estan basados en un numero aleatorio
   La direccion horizontal es siempre la misma y va ondulando verticalmente.
   Esto hasta llegar a sus limites, donde se invierte su direccion horizontal */
-    
+    console.log("se mueve")
   if(direccion=='v'){
     this.x -= this.velocidad;
     

@@ -31,14 +31,14 @@ var Juego = {
     new Obstaculo('imagenes/auto_verde_abajo.png', 570, 470, 15, 30,1 ),
     new Obstaculo('imagenes/auto_verde_abajo.png', 470, 400, 15, 30,1 ),
      
-    new Obstaculo('imagenes/bache.png', 170, 80, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 170, 120, 30, 30, 1),
     new Obstaculo('imagenes/bache.png', 300, 470, 30, 30,1 ),
     new Obstaculo('imagenes/bache.png', 560, 400, 30, 30,1 ),
   
     new Obstaculo('imagenes/bache.png',550, 210, 30, 30,1 ),
     new Obstaculo('imagenes/bache.png', 700, 120, 30, 30,1 ),
     new Obstaculo('imagenes/bache.png', 770, 300, 30, 30,1 ),
-    new Obstaculo('imagenes/bache.png', 500, 100, 30, 30,1 ),
+    new Obstaculo('imagenes/bache.png', 500, 200, 30, 30,1 ),
     new Obstaculo('imagenes/valla_vertical.png', 500, 460, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 500, 480, 30, 30, 1),
     
@@ -46,8 +46,8 @@ var Juego = {
     new Obstaculo('imagenes/valla_horizontal.png', 530, 230, 30, 30, 1),
 
     
+    new Obstaculo('imagenes/valla_vertical.png', 800, 200, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 800, 100, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 800, 80, 30, 30, 1),
     
   
   ],
@@ -72,59 +72,71 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-    new ZombieCaminante('imagenes/zombie1.png', 70, 100, 10, 10, 2,{desdeX: 70,
+    new ZombieCaminante('imagenes/zombie1.png', 70, 100, 10, 10, 2,
+    rangoMov = {
+      desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
 
     
-    new ZombieCaminante('imagenes/zombie2.png', 80, 200, 10, 10, 2,{desdeX: 70,
+    new ZombieCaminante('imagenes/zombie2.png', 80, 200, 10, 10, 2,
+      rangoMov = {
+      desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
 
-    new ZombieCaminante('imagenes/zombie2.png', 90, 70, 10, 10, 2, {desdeX: 70,
+    new ZombieCaminante('imagenes/zombie2.png', 90, 70, 10, 10, 2, 
+    rangoMov = {
+      desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
-        new ZombieCaminante('imagenes/zombie2.png', 30, 40, 10, 10, 2, {desdeX: 70,
+        new ZombieCaminante('imagenes/zombie2.png', 30, 40, 10, 10, 2, 
+        rangoMov = {desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
-        new ZombieCaminante('imagenes/zombie2.png', 200, 120,10, 10, 2,{desdeX: 70,
-      hastaX:200,
-      desdeY: 100,
-      hastaY:200
-      }),
-
-    new ZombieCaminante('imagenes/zombie2.png', 600, 400,10, 10, 2,{desdeX: 70,
-      hastaX:200,
-      desdeY: 100,
-      hastaY:200
-      }),
-
-    new ZombieCaminante('imagenes/zombie2.png', 350, 415,10, 10, 2,{desdeX: 70,
+        new ZombieCaminante('imagenes/zombie2.png', 200, 120,10, 10, 2,
+        rangoMov = {desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
 
-    new ZombieCaminante('imagenes/zombie2.png', 230, 425,10, 10, 2,{desdeX: 70,
+    new ZombieCaminante('imagenes/zombie2.png', 600, 400,10, 10, 2,
+    rangoMov = {desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
 
-    new ZombieCaminante('imagenes/zombie2.png', 210, 70,10, 10, 2, {desdeX: 70,
+    new ZombieCaminante('imagenes/zombie2.png', 350, 415,10, 10, 2,
+    rangoMov = {desdeX: 70,
       hastaX:200,
       desdeY: 100,
       hastaY:200
       }),
-        new ZombieConductor('imagenes/tren_horizontal.png', 400,322,90,30, 1, 20, 'h'),
+
+    new ZombieCaminante('imagenes/zombie2.png', 230, 425,10, 10, 2,
+    rangoMov = {desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+
+    new ZombieCaminante('imagenes/zombie2.png', 210, 70,10, 10, 2, 
+    rangoMov = {desdeX: 70,
+      hastaX:200,
+      desdeY: 100,
+      hastaY:200
+      }),
+    new ZombieConductor('imagenes/tren_horizontal.png', 400,322,90,30, 1, 20, 'h'),
     new ZombieConductor('imagenes/tren_vertical.png', 644, 0, 30, 90, 1, 20, 'v'),
     new ZombieConductor('imagenes/tren_vertical.png', 678, 0, 30, 90, 1, 20, 'v')
 
@@ -155,7 +167,8 @@ Juego.iniciarRecursos = function() {
     'imagenes/auto_rojo_derecha.png',
     'imagenes/auto_rojo_izquierda.png',
     'imagenes/auto_verde_abajo.png',
-    'imagenes/auto_verde_derecha.png'
+    'imagenes/auto_verde_derecha.png',
+    'imagenes/finish.png',
   ]);
   Resources.onReady(this.comenzar.bind(Juego));
 };
@@ -255,7 +268,7 @@ Juego.dibujar = function() {
   
   
 //Dibujante dibuja las lineas de llegada//
-Dibujante.dibujarRectangulo('green', 750, 400, 150, 30);
+Dibujante.dibujarEntidad(llegada);
 
 };
 
@@ -268,12 +281,17 @@ Dibujante.dibujarRectangulo('green', 750, 400, 150, 30);
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
-
   this.enemigos.forEach(function(enemigo) {
+  //console.log(enemigo)
     
-  })
+    // console.log(enemigo.rangoMov);
+      // enemigo.__proto__.mover();
+    // // // // if(enemigo==ZombieCaminante){
+    //   console.log('Entro zombie caminante')
+    // enemigo.__proto__.mover();}
+  });
  
-};
+ };
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
 Si colisiona empieza el ataque el zombie, si no, deja de atacar.
@@ -282,6 +300,8 @@ se ven las colisiones con los obstaculos. En este caso sera con los zombies. */
 Juego.calcularAtaques = function() {
   this.enemigos.forEach(function(enemigo) {
     if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
+      
+      
       /* Si el enemigo colisiona debe empezar su ataque
       COMPLETAR */
     } else {
@@ -301,7 +321,6 @@ Juego.chequearColisiones = function(x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
       
       obstaculo.chocar(Jugador);
-      console.log(Jugador.vidas)
       obstaculo.potencia=0;
       puedeMoverse = false
     }
